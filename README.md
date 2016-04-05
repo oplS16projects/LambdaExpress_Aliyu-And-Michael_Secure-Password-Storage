@@ -50,25 +50,26 @@ Working Ui to the project.
 Algorithm and UI talking with each other.
 
 ## Group Responsibilities
-## Aliyu Zakari(@ABZaxxon) ##
-  1.Deliverable and Demonstration
-  2.Architecture Diagram
-  3.Plot
 
-###Deliverable and Demonstration###
+### Aliyu Zakari(@ABZaxxon) ###
+* Deliverable and Demonstration
+* Architecture Diagram
+* Plot
 
-## Michael Bowe ()@mgbowe1) ##
-  1.
-  2.
-  3.
+##### Deliverable and Demonstration #####
+I will be responsible for writing up and planning our presentation for the final day. I will be preparing the slides in Powerpoint/Google's slides.
+I hope to succeed in making the visual representation of our project and how it works. With the time slot we are given, will work out how we are going to execute the presentation; who will be talking and who will be doing the demo.
 
-**Additional instructions for teams of three:**
-* Remember that you must have prior written permission to work in groups of three (specifically, an approved `FP3` team declaration submission).
-* The team must nominate a lead. This person is primarily responsible for code integration. This work may be shared, but the team lead has default responsibility.
-* The team lead has full partner implementation responsibilities also.
-* Identify who is team lead.
+##### Architecture Diagram #####
+I will be responsible of drawing the UML and any other diagrams needed for this section, that includes the screenshot of the program and the interface.
 
-In the headings below, replace the silly names and GitHub handles with your actual ones.
+##### Plot #####
+I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program. 
+
+### Michael Bowe (@mgbowe1) ###
+*
+*
+*
 
 ### Michael Bowe @mgbowe1
 I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
@@ -78,4 +79,4 @@ I will write the RSA algorithm since I've been studying cryptography in Discrete
 ### Aliyu Zakari @ABZaxxon
 I will be handling the presentation part of the project.
 
->>>>>>> master
+> master
