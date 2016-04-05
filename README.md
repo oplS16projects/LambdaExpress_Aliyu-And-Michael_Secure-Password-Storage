@@ -19,12 +19,12 @@ If you are using some other starting materials, explain what they are. Basically
 I will be handling the demonstration plan, how it will be presented and the power points.
 
 ### Evaluation of Results
-<<<<<<< HEAD
 The success of this project will be measured by the ability to store passwords with usernames and website names in an encrypted text file and retrieve them correctly on a search by website name.
-=======
+
 How will you know if you are successful?
 If you include some kind of _quantitative analysis,_ that would be good.
->>>>>>> master
+
+>> master
 
 ## Architecture Diagram
 I will be handling the Diagram/Uml of the project.
@@ -64,7 +64,7 @@ I hope to succeed in making the visual representation of our project and how it 
 I will be responsible of drawing the UML and any other diagrams needed for this section, that includes the screenshot of the program and the interface.
 
 ##### Plot #####
-I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program. 
+I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program.
 
 ### Michael Bowe (@mgbowe1) ###
 *
@@ -79,4 +79,4 @@ I will write the RSA algorithm since I've been studying cryptography in Discrete
 ### Aliyu Zakari @ABZaxxon
 I will be handling the presentation part of the project.
 
-> master
+>> master
