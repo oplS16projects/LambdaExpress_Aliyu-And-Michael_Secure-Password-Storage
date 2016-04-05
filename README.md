@@ -67,9 +67,9 @@ I will be responsible of drawing the UML and any other diagrams needed for this 
 I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program.
 
 ### Michael Bowe (@mgbowe1) ###
-*
-*
-*
+* to be filled
+* to be filled
+* to be filled
 
 ### Michael Bowe @mgbowe1
 I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
