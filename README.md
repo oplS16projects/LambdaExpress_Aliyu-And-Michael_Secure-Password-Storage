@@ -43,7 +43,7 @@ Algorithm and UI talking with each other.
 
 ## Group Responsibilities
 
-### Aliyu Zakari(@ABZaxxon) ###
+### Aliyu Zakari @ABZaxxon ###
 * Deliverable and Demonstration
 * Architecture Diagram
 * Plot
@@ -61,8 +61,8 @@ I will be assisting in writing the procedure that will plot out the similarities
 ### Michael Bowe @mgbowe1
 
 #### Algorithm ####
-I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. 
+I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II.
 #### UI ####
-I will also write the ui regarding password insertion and retrival
+I will also write the ui regarding password insertion and retrieval
 
 =======
