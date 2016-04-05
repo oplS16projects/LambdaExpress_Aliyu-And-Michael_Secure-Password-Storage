@@ -7,13 +7,7 @@ This project is an implementation of RSA. RSA is a an encryption system without 
 We will be using recursion, map/filter/reduce, and object-orientation in our project. RSA will be implemented as no object using the message passing style. The search algorithm for retrieving passwords will make use of filter. Since, RSA depends heavily on primality we will implement a primality test using recursion.
 
 ### Data set or other source materials
-If you will be working with existing data, where will you get those data from? (Dowload it from a website? access it in a database? create it in a simulation you will build....)
-
-How will you convert that data into a form usable for your project?  
-
-Do your homework here: if you are pulling data from somewhere, actually go download it and look at it. Explain in some detail what your plan is for accomplishing the necessary processing.
-
-If you are using some other starting materials, explain what they are. Basically: anything you plan to use that isn't code.
+The data set will consist of faked username/password/website name data provided by the members of the team.
 
 ### Deliverable and Demonstration
 I will be handling the demonstration plan, how it will be presented and the power points.
@@ -23,8 +17,6 @@ The success of this project will be measured by the ability to store passwords w
 
 How will you know if you are successful?
 If you include some kind of _quantitative analysis,_ that would be good.
-
->> master
 
 ## Architecture Diagram
 I will be handling the Diagram/Uml of the project.
@@ -66,17 +58,11 @@ I will be responsible of drawing the UML and any other diagrams needed for this 
 ##### Plot #####
 I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program.
 
-### Michael Bowe (@mgbowe1) ###
-* to be filled
-* to be filled
-* to be filled
-
 ### Michael Bowe @mgbowe1
-I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
+
+#### Algorithm ####
+I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. 
+#### UI ####
+I will also write the ui regarding password insertion and retrival
 
 =======
-
-### Aliyu Zakari @ABZaxxon
-I will be handling the presentation part of the project.
-
->> master
