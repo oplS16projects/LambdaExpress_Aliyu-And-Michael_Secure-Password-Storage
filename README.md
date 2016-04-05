@@ -24,8 +24,6 @@ The success of this project will be measured by the ability to store passwords w
 How will you know if you are successful?
 If you include some kind of _quantitative analysis,_ that would be good.
 
->> master
-
 ## Architecture Diagram
 I will be handling the Diagram/Uml of the project.
 
@@ -66,17 +64,11 @@ I will be responsible of drawing the UML and any other diagrams needed for this 
 ##### Plot #####
 I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program.
 
-### Michael Bowe (@mgbowe1) ###
-* to be filled
-* to be filled
-* to be filled
-
 ### Michael Bowe @mgbowe1
-I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
+
+#### Algorithm ####
+I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. 
+#### UI ####
+I will also write the ui regarding password insertion and retrival
 
 =======
-
-### Aliyu Zakari @ABZaxxon
-I will be handling the presentation part of the project.
-
->> master
