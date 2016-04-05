@@ -13,7 +13,7 @@ How will you convert that data into a form usable for your project?
 
 Do your homework here: if you are pulling data from somewhere, actually go download it and look at it. Explain in some detail what your plan is for accomplishing the necessary processing.
 
-If you are using some other starting materails, explain what they are. Basically: anything you plan to use that isn't code.
+If you are using some other starting materials, explain what they are. Basically: anything you plan to use that isn't code.
 
 ### Deliverable and Demonstration
 I will be handling the demonstration plan, how it will be presented and the power points.
@@ -50,7 +50,17 @@ Working Ui to the project.
 Algorithm and UI talking with each other.
 
 ## Group Responsibilities
-Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. Include the milestones and final deliverable.
+## Aliyu Zakari(@ABZaxxon) ##
+  1.Deliverable and Demonstration
+  2.Architecture Diagram
+  3.Plot
+
+###Deliverable and Demonstration###
+
+## Michael Bowe ()@mgbowe1) ##
+  1.
+  2.
+  3.
 
 **Additional instructions for teams of three:**
 * Remember that you must have prior written permission to work in groups of three (specifically, an approved `FP3` team declaration submission).
@@ -61,11 +71,11 @@ Here each group member gets a section where they, as an individual, detail what 
 In the headings below, replace the silly names and GitHub handles with your actual ones.
 
 ### Michael Bowe @mgbowe1
-I will write the rsa algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
+I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II. I will also write the ui regarding password insertion.
 
 =======
 
 ### Aliyu Zakari @ABZaxxon
-I will be planning our demo and be doing the illustration of our project.
+I will be handling the presentation part of the project.
 
 >>>>>>> master
