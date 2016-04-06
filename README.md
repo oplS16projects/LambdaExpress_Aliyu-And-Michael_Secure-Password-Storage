@@ -15,11 +15,9 @@ I will be handling the demonstration plan, how it will be presented and the powe
 ### Evaluation of Results
 The success of this project will be measured by the ability to store passwords with usernames and website names in an encrypted text file and retrieve them correctly on a search by website name.
 
-How will you know if you are successful?
-If you include some kind of _quantitative analysis,_ that would be good.
-
 ## Architecture Diagram
-I will be handling the Diagram/Uml of the project.
+
+![Architecture Diagram](http://www.cs.uml.edu/~mbowe/OPL/fp/Architecture.png)
 
 ## Schedule
 * Explain how you will go from proposal to finished product.
