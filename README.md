@@ -22,15 +22,13 @@ If you include some kind of _quantitative analysis,_ that would be good.
 I will be handling the Diagram/Uml of the project.
 
 ## Schedule
-* Explain how you will go from proposal to finished product.
+For the First milestone, we plan to have a working Algorithm that would do the encryption and decryption Algorithm. And along side it we will have a Prototype UI to illustrate what it will look like and how it will function when users are using it.
 
-* There are three deliverable milestones to explicitly define, below.
+Second milestone we hope to have most of the bugs ironed out and will be interactive in the backend. And should have a designed UI, it may or may not be interactive depending on how we go, but it should be ready.
 
-* The nature of deliverables depend on your project, but may include things like processed data ready for import, core algorithms implemented, interface design prototyped, etc.
+Before the Final Presentation, the program should be fully ready and connected to the UI, we also have our presentation and slideshow also ready for presentation. We may do a practice run of the program and presentation.
 
-* You will be expected to turn in code, documentation, and data (as appropriate) at each of these stages.
-
-* Write concrete steps for your schedule to move from concept to working system.
+During each milestone we will obviously have updated UML's and screenshots of the progress and written documentations of what goes on in our program. 
 
 ### First Milestone (Fri Apr 15)
 Working Algorithm to the program. Prototype UI for the program.
