@@ -1,30 +1,24 @@
 #lang racket
-(define public_key (cons 0 0))
-(define make-rsa
-  (lambda (p q)
-    (if (and (prime? p) (prime? q))
-        (set!
-              public_key
-              (cons (* p q) (make-e p q)))
-        (set! public_key (cons 0 0)))))
-
-(define (make-e p q)
+(require math/number-theory)
+(define (make-rsa p q pass)
+  (define public_key (cons (* p q) (make-e p q)))
+  (define user_pass pass)
+  (define (make-e p q)
   (- (* (- p 1) (- q 1)) 1))
-
-(define (prime? p)
-  (define (prime-helper i)
-    (if (or (= (remainder p i) 0)
-            (= (remainder p (+ i 2)) 0))
-            #f
-            (if (<= (* i i) p)
-                (prime-helper (+ i 6))
-                #t)))
-  (cond ((> 0 p) #f)
-        ((= 1 p) #f)
-        ((= 2 p) #t)
-        ((= 3 p) #t)
-        ((= (remainder p 2) 0) #f)
-        ((= (remainder p 3) 0) #f)
-        (else (prime-helper 5))))
-(define get-rsa
-  (lambda (m) (m public_key)))
+  (define (encrypt num)
+    (map (lambda (x)
+           (modular-expt x (cdr public_key) (car public_key)))
+         num))
+  (define (decrypt password message)
+    (if (eq? password user_pass)
+        (map (lambda (x)
+               (modular-expt x
+                             (modular-inverse (cdr public_key)
+                                                (* (- p 1) (- q 1)))
+                             (car public_key)))
+              message)
+        "ERROR: Wrong Password"))
+  (define (dispatch m . params)
+    (cond ((eq? m 'encrypt) (encrypt params))
+          ((eq? m 'decrypt) (decrypt params))))
+  dispatch)
