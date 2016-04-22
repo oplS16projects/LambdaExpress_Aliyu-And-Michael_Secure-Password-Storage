@@ -28,6 +28,7 @@
           (set! pass (car newpass))
           pass)
         "ERROR: Unable to Authenticate"))
+  
  ;  (define (search x)
  ;    (map (lambda(x) (decode (decrypt x)))
  ;         (filter (equal? (lambda (x) (encrypt(car seach))db)
