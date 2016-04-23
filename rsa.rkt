@@ -84,6 +84,7 @@
                                    )))))
   (iter n ""))
 
+<<<<<<< HEAD
 (define prime1 17541956566777) ;; prime numbers
 (define prime2 9971149563847)  ;; prime numbers
 
@@ -114,3 +115,41 @@
 
 ;;(decode number_generated_from_encoding_string)
     ;;Example (decode 109111099046110111122097109097046119119119)
+=======
+;; database
+(define db
+  (lambda (p q pass)
+    (define data '())
+    (define internal-encryption (make-rsa p q pass))
+    (define insert
+      (lambda (list-data)
+        (if (string? (car list-data))
+            (cons (internal-encryption 'encrypt (map encode list-data)) data)
+            (cons (internal-encryption 'encrypt list-data) data))))
+    (define retrieve
+      (lambda (retrival passwd)
+        (if (equal? pass passwd)
+            (if (string? retrival)
+                (map decode (internal-encryption 'decrypt
+                                                 (filter (lambda (x)
+                                                           (equal?
+                                                            (internal-encryption 'encrypt (list (encode retrival)))
+                                                            (list (car x))))
+                                                         data)
+                                                 pass))
+                (internal-encryption 'decrypt
+                                     (filter (lambda (x)
+                                               (equal?
+                                                (internal-encryption 'encrypt (list (encode retrival)))
+                                                (list (car x))))
+                                             data)
+                                     pass))
+            "ERROR: wrong password")))
+    (define (dispatch m . args)
+      (cond ((eq? m 'insert) (insert args))
+            ((eq? m 'retrieve) (retrieve args))
+            (else "ERROR: invalid operation")))
+    (if (and (prime? p) (prime? q))
+        dispatch
+        "ERROR: p and q must be prime")))
+>>>>>>> master
