@@ -29,17 +29,17 @@
           pass)
         "ERROR: Unable to Authenticate"))
   
- ;  (define (search x)
- ;    (map (lambda(x) (decode (decrypt x)))
- ;         (filter (equal? (lambda (x) (encrypt(car seach))db)
- ;                         ))))
+;   (define (search x)  ;; procedure not fuctioning, Database object has to be made
+;     (map (lambda(x) (decode (decrypt x)))
+;          (filter (equal? (lambda (x) (encrypt(car search))database)
+;                          ))))
   
   (define (dispatch m . params)
     (cond ((equal? m 'encrypt) (encrypt params))
           ((equal? m 'decrypt) (decrypt (car params) (cdr params)))
           ((equal? m 'passwd) (setpass (car params) (cdr params)))
           ((equal? m 'key) public_key)))
- ;        ((equal? m 'search) (search params))
+ ;         ((equal? m 'search) (search params))
   (if (and (prime? p) (prime? q))
       dispatch
       "ERROR: p and q must be prime"))
@@ -61,3 +61,29 @@
                                    (list->string (list (integer->char c)))
                                    )))))
   (iter n ""))
+
+(define prime1 17541956566777) ;; prime numbers
+(define prime2 9971149563847)  ;; prime numbers
+
+;; Instructions on how to use the following procedures.
+
+;;(define myrsa (make-rsa 1st_large_prime_number 2nd_large_prime_number password_symbol)) ;; makes an rsa object
+    ;;Example (define myrsa (make-rsa prime1 prime2 'iloveopl))
+
+;;(myrsa 'encrypt <some_list_of_numbers>) ;; encrypts numbers
+    ;;Example (myrsa 'encrypt '(112102626))
+
+;;(myrsa 'decrypt <some_list_of_numbers> 'foo) ;; decrypts numbers
+    ;;Example (myrsa 'decrypt '(78951163299089459819508873) 'iloveopl)
+
+;;(myrsa 'passwd 'old_password_symbol 'new_password_symbol) ;; changes the password
+    ;;Example (myrsa 'passwd 'iloveopl 'ilovecats)
+
+;;(myrsa 'key) ;; returns the public key
+    ;;Example (myrsa 'key)
+
+;;(encode string_to_be_encoded)
+    ;;Example (encode "www.amazon.com")
+
+;;(decode number_generated_from_encoding_string)
+    ;;Example (decode 109111099046110111122097109097046119119119)
