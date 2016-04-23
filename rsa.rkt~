@@ -29,42 +29,20 @@
           pass)
         "ERROR: Unable to Authenticate"))
   
+;   (define (search x)  ;; procedure not fuctioning, Database object has to be made
+;     (map (lambda(x) (decode (decrypt x)))
+;          (filter (equal? (lambda (x) (encrypt(car search))database)
+;                          ))))
   
   (define (dispatch m . params)
     (cond ((equal? m 'encrypt) (encrypt params))
           ((equal? m 'decrypt) (decrypt (car params) (cdr params)))
           ((equal? m 'passwd) (setpass (car params) (cdr params)))
           ((equal? m 'key) public_key)))
-
+ ;         ((equal? m 'search) (search params))
   (if (and (prime? p) (prime? q))
       dispatch
       "ERROR: p and q must be prime"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define (make-database info)
-  (define myrsa (make-rsa prime1 prime2 'iloveopl))
-  
-   (define (search website)  ;; procedure not fuctioning, Database object has to be made
-     (map (lambda(x) (decode ((myrsa 'decrypt '(78951163299089459819508873) 'iloveopl))))
-          (filter (equal? (lambda (x) (myrsa 'encrypt '(112102626))info)
-                          ))))
-  
-  (define (store website username password)  ;; procedure not fuctioning, Database object has to be made
-     (cons (myrsa 'encrypt (encode website)) (list (myrsa 'encrypt (encode username)) (myrsa 'encrypt (encode password)) )))
-  
-  (define (retrieve x)  ;; procedure not fuctioning, Database object has to be made
-     (map (lambda(x) (decode (decode x)))
-          (filter (equal? (lambda (x) (decode(car search))info)
-                          ))))
-   
-  (define (dispatch m . params)
-    (cond ((equal? m 'search) (search params))
-          ((equal? m 'store) (store params params params))
-          ((equal? m 'retrieve) (store  params))
-          ))
-
-  dispatch)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; helpers for string encryption
 (define encode
@@ -86,11 +64,6 @@
 
 (define prime1 17541956566777) ;; prime numbers
 (define prime2 9971149563847)  ;; prime numbers
-
-;   (define (search x)  ;; procedure not fuctioning, Database object has to be made
-;     (map (lambda(x) (decode (decrypt x)))
-;          (filter (equal? (lambda (x) (encrypt(car search))database)
-;                          ))))
 
 ;; Instructions on how to use the following procedures.
 
