@@ -1,11 +1,10 @@
 # RSA: Secure Password Storage
 
 ## Current State of the Project
-We have completed the rsa algorithm and are now working on the UI. We have prototypes of the UI flow. The user can encrypt and decrypt lists of numbers at this point in time.
+We have completed the rsa algorithm and are now working on the UI. We have prototypes of the UI flow. The user can encrypt and decrypt lists of numbers or strings at this point in time.
 ![UI Prototype](UI%20Prototype%20Layout%20.png)
 
 #### Todo
-* capability to encode strings and caharacters as numbers and vice versa
 * initial ui implementation
 * finished product
 
