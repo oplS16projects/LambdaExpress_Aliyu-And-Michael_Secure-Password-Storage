@@ -58,24 +58,39 @@
     (define insert
       (lambda (list-data)
         (if (string? (caar list-data))
-            (set! data (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
-            (set! data (cons (internal-encryption 'encrypt (car list-data)) data)))))
+            ;(set! data (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
+            ;(set! data (cons (internal-encryption 'encrypt (car list-data)) data)))))
+            (input (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
+            (input (cons (internal-encryption 'encrypt (car list-data)) data)))))
     (define retrieve
       (lambda (retrival passwd)
         (if (equal? pass passwd)
             (if (string? retrival)
+;                (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
+;                                                      (filter (lambda (x)
+;                                                                (equal?
+;                                                                 (internal-encryption 'encrypt (list (encode retrival)))
+;                                                                 (list (car x))))
+;                                                              data)))
+;                (map (lambda (x) (internal-encryption 'decrypt x pass))
+;                     (filter (lambda (x)
+;                               (equal?
+;                                (internal-encryption 'encrypt (list (encode retrival)))
+;                                (list (car x))))
+;                             data))
                 (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
-                                 (filter (lambda (x)
-                                          (equal?
-                                           (internal-encryption 'encrypt (list (encode retrival)))
-                                           (list (car x))))
-                                         data)))
+                                                      (filter (lambda (x)
+                                                                (equal?
+                                                                 (internal-encryption 'encrypt (list (encode retrival)))
+                                                                 (list (car x))))
+                                                              output)))
                 (map (lambda (x) (internal-encryption 'decrypt x pass))
                      (filter (lambda (x)
-                              (equal?
-                               (internal-encryption 'encrypt (list (encode retrival)))
+                               (equal?
+                                (internal-encryption 'encrypt (list (encode retrival)))
                                 (list (car x))))
-                             data)))
+                             output))
+                )
             "ERROR: wrong password")))
     (define get-all
       (lambda (passwd)
@@ -94,5 +109,30 @@
         dispatch
         "ERROR: p and q must be prime")))
 
+;;Storing the data into a .SS database file
+
+(define (input into) 
+  (let ((p (open-output-file "database.ss" #:exists 'append)))
+    (let f ((ls (list into)))    
+      (if (not(null? ls))
+          (begin
+            (write (car(car ls)) p)
+            (newline p)
+            (f (cdr ls)))null))
+    (close-output-port p) )
+  )
+
+(define output
+  (call-with-input-file "database.ss" 
+    (lambda (p)
+      (let f ((x (read p)))
+        (if (pair? x)          
+            (cons x (f (read p)))
+            '())))))
+
 ;; instantiate a database
 (define db (make-db (+ (expt 10 999) 7) (+ (expt 10 999) 663) 'foo))
+
+;;How To run the program
+;;(db 'insert (list "www.amazon.com" "leo" "1234"))
+;;(db 'retrieve "www.amazon.com" 'foo)
