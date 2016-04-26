@@ -163,8 +163,7 @@
   (call-with-input-file "database.ss" 
   (lambda (p)
     (let f ((x (read p)))
-      (if (pair? x)
-          
+      (if (list? x)
           (cons x (f (read p)))
           '()))))
   )
@@ -172,12 +171,12 @@
 ;>>>>>>> master
 (define password (db prime1 prime2 'abz))
 (password 'insert (list "amazon.com" "leo" "1234"))
-;(password 'insert (list "amazon.com" "meo" "1234"))
-;(password 'insert (list "amazon.com" "keo" "1234"))
-;(password 'insert (list "walmart.com" "aeo" "1234"))
-;(password 'insert (list "walmart.com" "seo" "1234"))
-;(password 'insert (list "walmart.com" "deo" "1234"))
-;(password 'retrieve  "amazon.com" 'abz)
-;(password 'retrieve  "walmart.com" 'abz)
+(password 'insert (list "amazon.com" "meo" "1234"))
+(password 'insert (list "amazon.com" "keo" "1234"))
+(password 'insert (list "walmart.com" "aeo" "1234"))
+(password 'insert (list "walmart.com" "seo" "1234"))
+(password 'insert (list "walmart.com" "deo" "1234"))
+(password 'retrieve  "amazon.com" 'abz)
+(password 'retrieve  "walmart.com" 'abz)
 
 ;(input (list 1 2 3 4 5))
