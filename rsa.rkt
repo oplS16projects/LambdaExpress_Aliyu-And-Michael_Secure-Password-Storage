@@ -65,16 +65,7 @@
                 (f (cdr ls)))null))
         (close-output-port p) )
       )
-    (define output
-      (call-with-input-file "database.ss" 
-        (lambda (p)
-          (let f ((x (read p)))
-            (if (string? x)
-                (map (lambda (y)
-                   (string->number y))
-                 (string-split x))
-                (list x))
-            ))))
+    (define output (file->list "database.ss"))
     (define insert
       (lambda (list-data)
         (if (string? (caar list-data))
