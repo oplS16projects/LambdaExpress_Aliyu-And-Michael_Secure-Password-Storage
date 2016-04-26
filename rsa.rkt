@@ -125,20 +125,33 @@
       (lambda (retrival passwd)
         (if (equal? pass passwd)
             (if (string? retrival)
-                (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
+;                (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
+;                                                      (filter (lambda (x)
+;                                                                (equal?
+;                                                                 (internal-encryption 'encrypt (list (encode retrival)))
+;                                                                 (list (car x))))
+;                                                              data)))
+;                (map (lambda (x) (internal-encryption 'decrypt x pass))
+;                     (filter (lambda (x)
+;                               (equal?
+;                                (internal-encryption 'encrypt (list (encode retrival)))
+;                                (list (car x))))
+;                             data))
+                (map (lambda (x) (map decode x))
+                     (map (lambda (x) (internal-encryption 'decrypt x pass))
                                                       (filter (lambda (x)
                                                                 (equal?
                                                                  (internal-encryption 'encrypt (list (encode retrival)))
                                                                  (list (car x))))
-                                                              data)))
+                                                              output)))
                 (map (lambda (x) (internal-encryption 'decrypt x pass))
                      (filter (lambda (x)
                                (equal?
                                 (internal-encryption 'encrypt (list (encode retrival)))
                                 (list (car x))))
-                             data)))
+                             output)))
             "ERROR: wrong password")))
-
+    
     
     (define (dispatch m . args)
       (cond ((eq? m 'insert) (insert args))
@@ -149,25 +162,30 @@
         "ERROR: p and q must be prime")))
 
 (define (input into) 
-    (let ((p (open-output-file "database.ss" #:exists 'append)))
-  (let f ((ls (list into)))    
-    (if (not (null? ls))
-        (begin
-          (write (car(car ls)) p)
-          (newline p)
-          (f (cdr ls))) null))
-  (close-output-port p))
+  (let ((p (open-output-file "database.ss" #:exists 'append)))
+    (let f ((ls (list into)))    
+      (if (not(null? ls))
+          (begin
+            (write (car(car ls)) p)
+            (newline p)
+            (f (cdr ls)))null))
+   (close-output-port p) )
   )
+
+;(define output2
+;  (let ((p (open-input-file "database.ss")))
+;    (let f ((x (read p)))
+;      (if (list? x)          
+;          (cons x (f (read p)))
+;          '()))))
 
 (define output
   (call-with-input-file "database.ss" 
   (lambda (p)
     (let f ((x (read p)))
-      (if (list? x)
-          
+      (if (list? x)          
           (cons x (f (read p)))
-          '()))))
-  )
+          '())))))
 
 ;>>>>>>> master
 (define password (db prime1 prime2 'abz))
@@ -175,6 +193,6 @@
 (password 'insert (list "www.amazon.com" "nick" "2345"))
 (password 'insert (list "www.cnn.net" "mick" "3456"))
 (password 'insert (list "www.uml.edu" "chiles" "102937"))
+(password 'retrieve  "www.amazon.com" 'abz)
 
-;(password 'retrieve  "amazon.com" 'abz)
-;(password 'retrieve  "walmart.com" 'abz)
+
