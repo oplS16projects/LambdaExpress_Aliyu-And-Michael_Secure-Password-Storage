@@ -32,32 +32,6 @@
       dispatch
       "ERROR: p and q must be prime"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define (make-database info)
-  (define myrsa (make-rsa prime1 prime2 'iloveopl))
-  
-  (define (search website)  ;; procedure not fuctioning, Database object has to be made
-    (map (lambda(x) (decode ((myrsa 'decrypt '(78951163299089459819508873) 'iloveopl))))
-         (filter (equal? (lambda (x) (myrsa 'encrypt '(112102626))info)
-                         ))))
-  
-  (define (store website username password)  ;; procedure not fuctioning, Database object has to be made
-    (cons (myrsa 'encrypt (encode website)) (list (myrsa 'encrypt (encode username)) (myrsa 'encrypt (encode password)) )))
-  
-  (define (retrieve x)  ;; procedure not fuctioning, Database object has to be made
-    (map (lambda(x) (decode (decode x)))
-         (filter (equal? (lambda (x) (decode(car search))info)
-                         ))))
-  
-  (define (dispatch m . params)
-    (cond ((equal? m 'search) (search params))
-          ((equal? m 'store) (store params params params))
-          ((equal? m 'retrieve) (store  params))
-          ))
-  
-  dispatch)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; helpers for string encryption
 (define encode
   (lambda (s)
@@ -76,38 +50,6 @@
                                    )))))
   (iter n ""))
 
-;<<<<<<< HEAD
-(define prime1 17541956566777) ;; prime numbers
-(define prime2 9971149563847)  ;; prime numbers
-
-;   (define (search x)  ;; procedure not fuctioning, Database object has to be made
-;     (map (lambda(x) (decode (decrypt x)))
-;          (filter (equal? (lambda (x) (encrypt(car search))database)
-;                          ))))
-
-;; Instructions on how to use the following procedures.
-
-;;(define myrsa (make-rsa 1st_large_prime_number 2nd_large_prime_number password_symbol)) ;; makes an rsa object
-;;Example (define myrsa (make-rsa prime1 prime2 'iloveopl))
-
-;;(myrsa 'encrypt <some_list_of_numbers>) ;; encrypts numbers
-;;Example (myrsa 'encrypt '(112102626))
-
-;;(myrsa 'decrypt <some_list_of_numbers> 'foo) ;; decrypts numbers
-;;Example (myrsa 'decrypt '(78951163299089459819508873) 'iloveopl)
-
-;;(myrsa 'passwd 'old_password_symbol 'new_password_symbol) ;; changes the password
-;;Example (myrsa 'passwd 'iloveopl 'ilovecats)
-
-;;(myrsa 'key) ;; returns the public key
-;;Example (myrsa 'key)
-
-;;(encode string_to_be_encoded)
-;;Example (encode "www.amazon.com")
-
-;;(decode number_generated_from_encoding_string)
-;;Example (decode 109111099046110111122097109097046119119119)
-;=======
 ;; database
 (define make-db
   (lambda (p q pass)
@@ -116,47 +58,12 @@
     (define insert
       (lambda (list-data)
         (if (string? (caar list-data))
-<<<<<<< HEAD
-            (input(cons (internal-encryption 'encrypt (map encode (car list-data))) data))
-            (input(cons (internal-encryption 'encrypt (map encode (car list-data))) data))
-            ;(set! data (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
-            ;(set! data (cons (internal-encryption 'encrypt (car list-data)) data))
-            )))
-=======
             (set! data (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
             (set! data (cons (internal-encryption 'encrypt (car list-data)) data)))))
->>>>>>> master
     (define retrieve
       (lambda (retrival passwd)
         (if (equal? pass passwd)
             (if (string? retrival)
-<<<<<<< HEAD
-;                (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
-;                                                      (filter (lambda (x)
-;                                                                (equal?
-;                                                                 (internal-encryption 'encrypt (list (encode retrival)))
-;                                                                 (list (car x))))
-;                                                              data)))
-;                (map (lambda (x) (internal-encryption 'decrypt x pass))
-;                     (filter (lambda (x)
-;                               (equal?
-;                                (internal-encryption 'encrypt (list (encode retrival)))
-;                                (list (car x))))
-;                             data))
-                (map (lambda (x) (map decode x))
-                     (map (lambda (x) (internal-encryption 'decrypt x pass))
-                                                      (filter (lambda (x)
-                                                                (equal?
-                                                                 (internal-encryption 'encrypt (list (encode retrival)))
-                                                                 (list (car x))))
-                                                              output)))
-                (map (lambda (x) (internal-encryption 'decrypt x pass))
-                     (filter (lambda (x)
-                               (equal?
-                                (internal-encryption 'encrypt (list (encode retrival)))
-                                (list (car x))))
-                             output)))
-=======
                 (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
                                  (filter (lambda (x)
                                           (equal?
@@ -176,60 +83,16 @@
             (map (lambda (x) (map decode x))
                  (map (lambda (x) (internal-encryption 'decrypt x pass))
                       data))
->>>>>>> master
             "ERROR: wrong password")))
-    
-    
     (define (dispatch m . args)
       (cond ((eq? m 'insert) (insert args))
             ((eq? m 'retrieve) (retrieve (car args) (cadr args)))
-<<<<<<< HEAD
-=======
             ((eq? m 'showdata) data)
             ((eq? m 'get-all) (get-all (car args)))
->>>>>>> master
             (else "ERROR: invalid operation")))
     (if (and (prime? p) (prime? q))
         dispatch
         "ERROR: p and q must be prime")))
 
-<<<<<<< HEAD
-(define (input into) 
-  (let ((p (open-output-file "database.ss" #:exists 'append)))
-    (let f ((ls (list into)))    
-      (if (not(null? ls))
-          (begin
-            (write (car(car ls)) p)
-            (newline p)
-            (f (cdr ls)))null))
-   (close-output-port p) )
-  )
-
-;(define output2
-;  (let ((p (open-input-file "database.ss")))
-;    (let f ((x (read p)))
-;      (if (list? x)          
-;          (cons x (f (read p)))
-;          '()))))
-
-(define output
-  (call-with-input-file "database.ss" 
-  (lambda (p)
-    (let f ((x (read p)))
-      (if (list? x)          
-          (cons x (f (read p)))
-          '())))))
-
-;>>>>>>> master
-(define password (db prime1 prime2 'abz))
-(password 'insert (list "www.amazon.com" "leo" "1234"))
-(password 'insert (list "www.amazon.com" "nick" "2345"))
-(password 'insert (list "www.cnn.net" "mick" "3456"))
-(password 'insert (list "www.uml.edu" "chiles" "102937"))
-(password 'retrieve  "www.amazon.com" 'abz)
-
-
-=======
 ;; instantiate a database
 (define db (make-db (+ (expt 10 999) 7) (+ (expt 10 999) 663) 'foo))
->>>>>>> master
