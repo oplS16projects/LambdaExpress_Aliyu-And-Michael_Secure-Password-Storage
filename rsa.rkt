@@ -55,6 +55,23 @@
   (lambda (p q pass)
     (define data '())
     (define internal-encryption (make-rsa p q pass))
+    (define (input into) 
+      (let ((p (open-output-file "database.ss" #:exists 'append)))
+        (let f ((ls (list into)))    
+          (if (not(null? ls))
+              (begin
+                (write (car(car ls)) p)
+                (newline p)
+                (f (cdr ls)))null))
+        (close-output-port p) )
+      )
+    (define output
+      (call-with-input-file "database.ss" 
+        (lambda (p)
+          (let f ((x (read p)))
+            (if (pair? x)          
+                (cons x (f (read p)))
+                '())))))
     (define insert
       (lambda (list-data)
         (if (string? (caar list-data))
@@ -112,26 +129,7 @@
         dispatch
         "ERROR: p and q must be prime")))
 
-;;Storing the data into a .SS database file
 
-(define (input into) 
-  (let ((p (open-output-file "database.ss" #:exists 'append)))
-    (let f ((ls (list into)))    
-      (if (not(null? ls))
-          (begin
-            (write (car(car ls)) p)
-            (newline p)
-            (f (cdr ls)))null))
-    (close-output-port p) )
-  )
-
-(define output
-  (call-with-input-file "database.ss" 
-    (lambda (p)
-      (let f ((x (read p)))
-        (if (pair? x)          
-            (cons x (f (read p)))
-            '())))))
 
 ;; instantiate a database
 (define db (make-db (+ (expt 10 999) 7) (+ (expt 10 999) 663) 'foo))
