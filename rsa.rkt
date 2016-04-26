@@ -51,38 +51,48 @@
   (iter n ""))
 
 ;; database
-(define db
+(define make-db
   (lambda (p q pass)
     (define data '())
     (define internal-encryption (make-rsa p q pass))
     (define insert
       (lambda (list-data)
-        (if (string? (car list-data))
-            (cons (internal-encryption 'encrypt (map encode list-data)) data)
-            (cons (internal-encryption 'encrypt list-data) data))))
+        (if (string? (caar list-data))
+            (set! data (cons (internal-encryption 'encrypt (map encode (car list-data))) data))
+            (set! data (cons (internal-encryption 'encrypt (car list-data)) data)))))
     (define retrieve
       (lambda (retrival passwd)
         (if (equal? pass passwd)
             (if (string? retrival)
-                (map decode (internal-encryption 'decrypt
-                                                 (filter (lambda (x)
-                                                           (equal?
-                                                            (internal-encryption 'encrypt (list (encode retrival)))
-                                                            (list (car x))))
-                                                         data)
-                                                 pass))
-                (internal-encryption 'decrypt
-                                     (filter (lambda (x)
-                                               (equal?
-                                                (internal-encryption 'encrypt (list (encode retrival)))
-                                                (list (car x))))
-                                             data)
-                                     pass))
+                (map (lambda (x) (map decode x)) (map (lambda (x) (internal-encryption 'decrypt x pass))
+                                 (filter (lambda (x)
+                                          (equal?
+                                           (internal-encryption 'encrypt (list (encode retrival)))
+                                           (list (car x))))
+                                         data)))
+                (map (lambda (x) (internal-encryption 'decrypt x pass))
+                     (filter (lambda (x)
+                              (equal?
+                               (internal-encryption 'encrypt (list (encode retrival)))
+                                (list (car x))))
+                             data)))
+            "ERROR: wrong password")))
+    (define get-all
+      (lambda (passwd)
+        (if (equal? pass passwd)
+            (map (lambda (x) (map decode x))
+                 (map (lambda (x) (internal-encryption 'decrypt x pass))
+                      data))
             "ERROR: wrong password")))
     (define (dispatch m . args)
       (cond ((eq? m 'insert) (insert args))
-            ((eq? m 'retrieve) (retrieve args))
+            ((eq? m 'retrieve) (retrieve (car args) (cadr args)))
+            ((eq? m 'showdata) data)
+            ((eq? m 'get-all) (get-all (car args)))
             (else "ERROR: invalid operation")))
     (if (and (prime? p) (prime? q))
         dispatch
         "ERROR: p and q must be prime")))
+
+;; instantiate a database
+(define db (make-db (+ (expt 10 999) 7) (+ (expt 10 999) 663) 'foo))
