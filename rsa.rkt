@@ -69,9 +69,12 @@
       (call-with-input-file "database.ss" 
         (lambda (p)
           (let f ((x (read p)))
-            (if (pair? x)          
-                (cons x (f (read p)))
-                '())))))
+            (if (string? x)
+                (map (lambda (y)
+                   (string->number y))
+                 (string-split x))
+                (list x))
+            ))))
     (define insert
       (lambda (list-data)
         (if (string? (caar list-data))
