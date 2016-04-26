@@ -61,7 +61,7 @@
           (if (not(null? ls))
               (begin
                 (write (car(car ls)) p)
-                (newline p)
+                (write (newline p))
                 (f (cdr ls)))null))
         (close-output-port p) )
       )
