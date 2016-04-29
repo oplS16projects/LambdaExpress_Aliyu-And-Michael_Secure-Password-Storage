@@ -9,11 +9,11 @@ Aliyu Zakari @ABZaxxon
 LambdaPassword is a secure password and username storage that uses the RSA cryptosystem to encrypt the information entered for storage and decrypt the information when requested.
 
 ##Screenshot
-(insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
-
-Here's a demonstration of how to display an image that's uploaded to this repo:
-![screenshot showing env diagram](withdraw.png)
-
+![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_1.png)
+![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_2.png)
+![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_3.png)
+![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_4.png)
+![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_5.png)
 ##Concepts Demonstrated
 * **Data abstraction**, **recursive data structures** and **encapsulation**  implemented using Message Passing making making the RSA encryption and decryption algorithm which is used as the constructor for the make-db object. We also made helper functions that encode and decode strings.
 
