@@ -1,14 +1,12 @@
-# FP7-webpage Title of Project
-This is a template for using your repo's README.md as your project web page.
-I recommend you copy and paste into your README file. Delete this line and the one above it, customize everything else. Make it look good!
+# LambdaPassword
 
 ##Authors
-Person One
+Michael Bowe @mgbowe1
 
-Person Two
+Aliyu Zakari @ABZaxxon
 
 ##Overview
-A brief description of the project is given here.  The description is 1 to 3 sentences long.  Be concise and clear.
+LambdaPassword is a secure password and username storage that uses the RSA cryptosystems to encrypt the information entered for storage and decrypt the information when requested.
 
 ##Screenshot
 (insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
@@ -17,34 +15,36 @@ Here's a demonstration of how to display an image that's uploaded to this repo:
 ![screenshot showing env diagram](withdraw.png)
 
 ##Concepts Demonstrated
-Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient.
-* **Data abstraction** is used to provide access to the elements of the RSS feed.
-* The objects in the OpenGL world are represented with **recursive data structures.**
-* **Symbolic language processing techniques** are used in the parser.
+* **Data abstraction**, **recursive data structures** and **encapsulation**  implemented using Message Passing making making the RSA encryption and decryption algorithm which is used as the constructor for the make-db object. We also made helper files that encode and decode the strings.
 
 ##External Technology and Libraries
-Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
+(require math/number-theory) - For the algorithm of the encryption and decryption.
+(require racket/gui/base) - For the UI.
+
 
 ##Favorite Scheme Expressions
-####Mark (a team member)
+####Michael Bowe
 Each team member should identify a favorite expression or procedure, written by them, and explain what it does. Why is it your favorite? What OPL philosophy does it embody?
 Remember code looks something like this:
 ```scheme
 (map (lambda (x) (foldr compose functions)) data)
 ```
-####Lillian (another team member)
-This expression reads in a regular expression and elegantly matches it against a pre-existing hashmap....
+####Aliyu Zakari
+This code does the writing of the encryption of the information to a database.ss file. It was fun finally getting it to work and also trying to set such that when information is read in, it is read in as a list with a newline after each entry. It was thanks to Michael for finding a much better methode for the output. It helped eliminate the bug of printing out nothing for no reason.
 ```scheme
-(let* ((expr (convert-to-regexp (read-line my-in-port)))
-             (matches (flatten
-                       (hash-map *words*
-                                 (lambda (key value)
-                                   (if (regexp-match expr key) key '()))))))
-  matches)
+define (input into)
+  (let ((p (open-output-file "database.ss" #:exists 'append)))
+    (let f ((ls (list into)))    
+      (if (not(null? ls))
+          (begin
+            (write (car(car ls)) p)
+            (newline p)
+            (f (cdr ls)))null))
+    (close-output-port p) )
+  )
+(define output (lambda () (file->list "database.ss")))
 ```
 
-##Additional Remarks
-Anything else you want to say in your report. Can rename or remove this section.
 
 #How to Download and Run
 You may want to link to your latest release for easy downloading by people (such as Mark).
