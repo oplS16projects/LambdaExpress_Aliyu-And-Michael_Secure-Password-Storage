@@ -32,7 +32,7 @@ Remember code looks something like this:
 ####Aliyu Zakari
 This code does the writing of the encryption of the information to a database.ss file. It was fun finally getting it to work and also trying to set such that when information is read in, it is read in as a list with a newline after each entry. It was thanks to Michael for finding a much better methode for the output. It helped eliminate the bug of printing out nothing for no reason.
 ```scheme
-define (input into)
+(define (input into)
   (let ((p (open-output-file "database.ss" #:exists 'append)))
     (let f ((ls (list into)))    
       (if (not(null? ls))
