@@ -1,72 +1,52 @@
-# RSA: Secure Password Storage
+# LambdaPassword
 
-## Current State of the Project
-We have completed the rsa algorithm and are now working on the UI. We have prototypes of the UI flow. The user can encrypt and decrypt lists of numbers or strings at this point in time.
-![UI Prototype](UI%20Prototype%20Layout%20.png)
+##Authors
+Michael Bowe @mgbowe1
 
-#### Todo
-* initial ui implementation
-* finished product
+Aliyu Zakari @ABZaxxon
 
-### Statement
-This project is an implementation of RSA. RSA is a an encryption system without a Racket Library. We would like to write a library to do RSA encryption in Racket. To test this we will be writing a secure password storage system.
+##Overview
+LambdaPassword is a secure password and username storage that uses the RSA cryptosystems to encrypt the information entered for storage and decrypt the information when requested.
 
-### Analysis
-We will be using recursion, map/filter/reduce, and object-orientation in our project. RSA will be implemented as no object using the message passing style. The search algorithm for retrieving passwords will make use of filter. Since, RSA depends heavily on primality we will implement a primality test using recursion.
+##Screenshot
+(insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
 
-### Data set or other source materials
-The data set will consist of faked username/password/website name data provided by the members of the team.
+Here's a demonstration of how to display an image that's uploaded to this repo:
+![screenshot showing env diagram](withdraw.png)
 
-### Deliverable and Demonstration
-I will be handling the demonstration plan, how it will be presented and the power points.
+##Concepts Demonstrated
+* **Data abstraction**, **recursive data structures** and **encapsulation**  implemented using Message Passing making making the RSA encryption and decryption algorithm which is used as the constructor for the make-db object. We also made helper files that encode and decode the strings.
 
-### Evaluation of Results
-The success of this project will be measured by the ability to store passwords with usernames and website names in an encrypted text file and retrieve them correctly on a search by website name.
+##External Technology and Libraries
+(require math/number-theory) - For the algorithm of the encryption and decryption.
+(require racket/gui/base) - For the UI.
 
-## Architecture Diagram
 
-![Architecture Diagram](http://www.cs.uml.edu/~mbowe/OPL/fp/Architecture.png)
+##Favorite Scheme Expressions
+####Michael Bowe
+Each team member should identify a favorite expression or procedure, written by them, and explain what it does. Why is it your favorite? What OPL philosophy does it embody?
+Remember code looks something like this:
+```scheme
+(map (lambda (x) (foldr compose functions)) data)
+```
+####Aliyu Zakari
+This code does the writing of the encryption of the information to a database.ss file. It was fun finally getting it to work and also trying to set such that when information is read in, it is read in as a list with a newline after each entry. It was thanks to Michael for finding a much better methode for the output. It helped eliminate the bug of printing out nothing for no reason.
+```scheme
+(define (input into)
+  (let ((p (open-output-file "database.ss" #:exists 'append)))
+    (let f ((ls (list into)))    
+      (if (not(null? ls))
+          (begin
+            (write (car(car ls)) p)
+            (newline p)
+            (f (cdr ls)))null))
+    (close-output-port p) )
+  )
+(define output (lambda () (file->list "database.ss")))
+```
 
-## Schedule
-For the First milestone, we plan to have a working Algorithm that would do the encryption and decryption Algorithm. And along side it we will have a Prototype UI to illustrate what it will look like and how it will function when users are using it.
 
-Second milestone we hope to have most of the bugs ironed out and will be interactive in the backend. And should have a designed UI, it may or may not be interactive depending on how we go, but it should be ready.
+#How to Download and Run
+You may want to link to your latest release for easy downloading by people (such as Mark).
 
-Before the Final Presentation, the program should be fully ready and connected to the UI, we also have our presentation and slideshow also ready for presentation. We may do a practice run of the program and presentation.
-
-During each milestone we will obviously have updated UML's and screenshots of the progress and written documentations of what goes on in our program. 
-
-### First Milestone (Fri Apr 15)
-Working Algorithm to the program. Prototype UI for the program.
-
-### Second Milestone (Fri Apr 22)
-Working Ui to the project.
-
-### Final Presentation (last week of semester)
-Algorithm and UI talking with each other.
-
-## Group Responsibilities
-
-### Aliyu Zakari @ABZaxxon ###
-* Deliverable and Demonstration
-* Architecture Diagram
-* Plot
-
-##### Deliverable and Demonstration #####
-I will be responsible for writing up and planning our presentation for the final day. I will be preparing the slides in Powerpoint/Google's slides.
-I hope to succeed in making the visual representation of our project and how it works. With the time slot we are given, will work out how we are going to execute the presentation; who will be talking and who will be doing the demo.
-
-##### Architecture Diagram #####
-I will be responsible of drawing the UML and any other diagrams needed for this section, that includes the screenshot of the program and the interface.
-
-##### Plot #####
-I will be assisting in writing the procedure that will plot out the similarities of the input passwords and usernames stored in the program.
-
-### Michael Bowe @mgbowe1
-
-#### Algorithm ####
-I will write the RSA algorithm since I've been studying cryptography in Discrete Structures II.
-#### UI ####
-I will also write the ui regarding password insertion and retrieval
-
-=======
+Include what file to run, what to do with that file, how to interact with the app when its running, etc.
