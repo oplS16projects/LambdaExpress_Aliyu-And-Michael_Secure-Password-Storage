@@ -9,7 +9,7 @@ Aliyu Zakari @ABZaxxon
 LambdaPassword is a secure password and username storage that uses the RSA cryptosystem to encrypt the information entered for storage and decrypt the information when requested.
 
 ##Screenshot
-![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_1.png)
+![screenshot showing env diagram](SA_screenshots_1.png)
 ![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_2.png)
 ![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_3.png)
 ![alt tag](https://github.com/oplS16projects/LambdaExpress_Aliyu-And-Michael_Secure-Password-Storage/blob/ABZaxxonReadMe/RSA_screenshots_4.png)
