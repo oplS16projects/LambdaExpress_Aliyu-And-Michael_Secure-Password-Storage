@@ -116,7 +116,7 @@
       (cond ((eq? m 'insert) (insert args))
             ((eq? m 'retrieve) (retrieve (car args) (cadr args)))
 ;            ((eq? m 'showdata) data)
-            ((eq? m 'showdata) output)
+            ((eq? m 'showdata) (output))
             ((eq? m 'get-all) (get-all (car args)))
             (else "ERROR: invalid operation")))
     (if (and (prime? p) (prime? q))
